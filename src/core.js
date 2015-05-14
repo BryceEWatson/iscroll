@@ -523,24 +523,25 @@ IScroll.prototype = {
 	},
 
 	_translate: function (x, y) {
-		if ( this.options.useTransform ) {
+		if(!this.pause) {
+			if ( this.options.useTransform ) {
 
-/* REPLACE START: _translate */
+	/* REPLACE START: _translate */
 
-			this.scrollerStyle[utils.style.transform] = 'translate(' + x + 'px,' + y + 'px)' + this.translateZ;
+				this.scrollerStyle[utils.style.transform] = 'translate(' + x + 'px,' + y + 'px)' + this.translateZ;
 
-/* REPLACE END: _translate */
+	/* REPLACE END: _translate */
 
-		} else {
-			x = Math.round(x);
-			y = Math.round(y);
-			this.scrollerStyle.left = x + 'px';
-			this.scrollerStyle.top = y + 'px';
+			} else {
+				x = Math.round(x);
+				y = Math.round(y);
+				this.scrollerStyle.left = x + 'px';
+				this.scrollerStyle.top = y + 'px';
+			}
+
+			this.x = x;
+			this.y = y;
 		}
-
-		this.x = x;
-		this.y = y;
-
 // INSERT POINT: _translate
 
 	},
